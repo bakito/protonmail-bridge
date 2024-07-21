@@ -29,7 +29,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push ${{github.event.release.tag_name }}
         id: docker_build_release
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         if: ${{ github.event.release.tag_name != '' }}
         with:
           context: ./build
@@ -43,7 +43,7 @@ jobs:
 
       - name: Build and push latest
         id: docker_build_latest
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         if: ${{ github.event.release.tag_name == '' }}
         with:
           context: ./build
