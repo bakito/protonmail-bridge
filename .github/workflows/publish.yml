@@ -32,8 +32,8 @@ jobs:
         uses: docker/build-push-action@v6
         if: ${{ github.event.release.tag_name != '' }}
         with:
-          context: ./build
-          file: ./build/Dockerfile
+          context: .
+          file: ./deb/Dockerfile
           push: true
           tags: ghcr.io/bakito/protonmail-bridge:latest,ghcr.io/bakito/protonmail-bridge:${{ github.event.release.tag_name }}
           platforms: linux/amd64
@@ -46,8 +46,8 @@ jobs:
         uses: docker/build-push-action@v6
         if: ${{ github.event.release.tag_name == '' }}
         with:
-          context: ./build
-          file: ./build/Dockerfile
+          context: .
+          file: ./deb/Dockerfile
           push: true
           tags: ghcr.io/bakito/protonmail-bridge:latest
           platforms: linux/amd64
